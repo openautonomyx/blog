@@ -1,0 +1,153 @@
+<html>
+<head>
+  <title>17 Services, One File: 5 Counter-Intuitive Lessons from Building a Fast SaaS Toolkit</title>
+  <style>
+    body {
+      margin: 0 auto;
+      width: 744px;
+      font-family: Source Serif Pro, serif;
+      line-height: 32px;
+      font-weight: 400;
+      color: rgba(0, 0, 0, 0.7);
+      font-size: 21px;
+    }
+    h1, h2, h3 {
+      font-family: Source Sans Pro, Helvetica, Arial, sans-serif;
+    }
+    h1 a, h1 a:visited {
+      color: inherit;
+      text-decoration: none;
+    }
+    h1 {
+      line-height: 48px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 42px;
+      margin: 32px 0 20px;
+    }
+    h2 {
+      line-height: 32px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 26px;
+      margin: 28px 0;
+    }
+    h3 {
+      line-height: 28px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.85);
+      font-size: 21px;
+      margin: 24px 0;
+    }
+    p {
+      margin: 32px 0;
+    }
+    .created, .published {
+      color: rgba(0, 0, 0, 0.55);
+      font-size: 15px;
+      line-height: 15px;
+      margin: 20px 0;
+    }
+    .created + .published {
+      margin-top: -12px;
+    }
+    blockquote {
+      font-family: Georgia, Source Serif Pro, serif;
+      font-style: italic;
+      font-size: 24px;
+      line-height: 36px;
+      margin: 48px 120px;
+      text-align: center;
+    }
+    a {
+      word-wrap: break-word;
+      outline: none;
+      text-decoration: none;
+      background-color: transparent;
+      border: 0;
+      color: #008CC9;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    a:visited {
+      color: #8C68CB;
+    }
+    .center {
+      text-align: center;
+    }
+    iframe {
+      display: block;
+      margin: 44px auto;
+    }
+    *:not(pre) + pre, pre:first-of-type {
+      margin-top: 32px;
+      padding-top: 32px;
+    }
+    pre:only-of-type {
+      margin: 32px 0;
+      padding: 32px;
+    }
+    pre {
+      background: #F3F6F8;
+      overflow-x: auto;
+      display: block;
+      font-size: 13px;
+      font-family: monospace;
+      line-height: 13px;
+      padding: 0 32px 32px;
+      white-space: pre;
+    }
+    a.embedded {
+      background: #F3F6F8;
+      display: block;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    img {
+      height: auto;
+      max-width: 100%;
+    }
+    .slate-image-embed__resize-full-width img {
+      width: 100%;
+    }
+    .series-logo {
+      width: 48px;
+      height: 48px;
+      box-sizing: border-box;
+      background-clip: content-box;
+      border: 4px solid transparent;
+      border-radius: 6px;
+      object-fit: scale-down;
+      float: left;
+    }
+    .series-title {
+      font-size: 16px;
+      font-weight: 600;
+      vertical-align: top;
+    }
+    .series-description {
+      color: rgba(0,0,0,.6);
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 20px;
+    }
+    div {
+      margin: 32px 0;
+    }
+  </style>
+</head>
+<body>
+    <img class="series-logo" src="https://media.licdn.com/dms/image/v2/D5612AQF6y6Ar3HKZsw/series-logo_image-shrink_300_300/B56ZyulIn3KEAQ-/0/1772455496841?e=1778716800&v=beta&t=_at0Jr3faDRZ3o08pjmRuGFlbFcAbP9jVJlPPPnZB44" />
+    <h3>
+      <span class="series-title">The Fractional Product Manager</span>
+      </br>
+      <span class="series-description">Your friendly LinkedIn Community Member Writing About #AllThingsIT</span>
+    </h3>
+    <img src="https://media.licdn.com/mediaD5612AQGxa1LUNkyLlw" alt="Autonomyx Fast SaaS" title="Autonomyx Fast SaaS" />
+      <h1><a href="https://www.linkedin.com/pulse/17-services-one-file-5-counter-intuitive-lessons-from-chinmay-panda-wcidc">17 Services, One File: 5 Counter-Intuitive Lessons from Building a Fast SaaS Toolkit</a></h1>
+    <p class="created">Created on 2026-04-07 03:58</p>
+  <p class="published">Published on 2026-04-07 04:01</p>
+  <div><h2></h2><h3>1. Introduction: The SaaS Boilerplate Fatigue</h3><p>Modern developers face a crushing paradox: the ecosystem is richer than ever, yet "SaaS boilerplate fatigue" has reached an all-time high. Founders routinely waste weeks wrestling with the "configuration nightmare" of wiring together authentication, billing, logging, and workflow automation before a single line of business logic is written.</p><p>The Autonomyx project began as a quest to dismantle this complexity. By shifting from a rigid, proprietary framework to an "OSS Assembly" model—bundling 17 essential services like Logto, Lago, and n8n into a unified launchpad—we proved that enterprise-ready infrastructure can be launched in minutes. But getting there required more than just a docker-compose.yml file; it required an architectural rethink focused on operational efficiency, using pnpm workspaces for strict dependency isolation to prevent "phantom dependency" bugs that plague standard npm monorepos.</p><h3>2. Takeaway 1: Docker Profiles and the Caddy Advantage</h3><p>When managing 17 services, the standard approach is to split configurations into a fragile stack of files—compose.base.yml, compose.ops.yml, and so on. This is a maintenance disaster. We opted instead for <strong>Docker Compose Profiles</strong> to keep every service in a single, authoritative file. Developers can selectively enable groups like --profile ops for monitoring or --profile growth for marketing tools, avoiding the "fragility of stacked overrides" where one -f flag out of order breaks the entire networking layer.</p><p>Equally critical was the choice of <strong>Caddy over Traefik</strong>. In a 17-service environment, Traefik’s label-based configuration—scattered across dozens of services—becomes unreadable. Caddy offers a single, human-readable Caddyfile and handles auto-provisioning HTTPS certificates with zero config. For a toolkit where users are constantly adding or removing services, regenerating one Caddyfile is infinitely simpler than managing a web of Docker labels.</p><p><strong>Insight:</strong> Profiles avoid the configuration nightmare of managing complex merge orders. By using a single source of truth, the CLI can programmatically generate the correct environment variables, ensuring a clean, predictable local environment that scales without "phantom" service dependencies.</p><h3>3. Takeaway 2: Why Multi-Tenancy Should Be Middleware, Not a Service</h3><p>A common trap for architects is implementing a dedicated service for multi-tenancy. We argue for a "thin" approach: multi-tenancy as a TypeScript middleware layer. By using row-level isolation (a shared database with a tenant_id column), we provide 90% of what a SaaS needs at zero extra operational cost.</p><p>However, a "Senior Architect" knows that being "thin" doesn't mean being "rigid." A key lesson from the assembly was the <strong>Matomo Exception</strong>: Matomo requires MySQL/MariaDB, while the rest of our stack is PostgreSQL-native. A rigid framework would force a single database type on the developer; an "Assembly" gives Matomo its own lightweight MariaDB container. This is the essence of composability: use the right tool for the job, even if it breaks the "one database" rule.</p><p>"Premature isolation is the #1 over-engineering mistake in early SaaS."</p><h3>4. Takeaway 3: The Redis Buffer—Protecting Your Database from Your Own Success</h3><p>Writing a new row to PostgreSQL for every API call or billing event creates "write amplification" that kills performance at scale. To mitigate this, our toolkit implements a <strong>Redis-first usage tracking buffer</strong>.</p><p>Events are pushed to Redis using RPUSH—an O(1), non-blocking operation. We then periodically flush these in batches of 500 into PostgreSQL. To ensure external billing systems don't bottleneck the app, we utilize a <strong>"fire-and-forget" pattern</strong> for Lago; we forward billing events asynchronously because external billing APIs are notoriously high-latency.</p><p>For rate limiting, we bypassed "fixed-window" counters (which are vulnerable to bursts at the edge of the window) in favor of a <strong>sliding-window rate limiter</strong> using Redis sorted sets. By storing individual request timestamps as members and using ZREMRANGEBYSCORE to prune old entries, we create a true, gapless limit that prevents users from doubling their allotted requests during window resets.</p><h3>5. Takeaway 4: The Rise of the "Meta-Skill"—Orchestrating AI</h3><p>The toolkit’s integration with Claude Code introduced the "Meta-Skill"—a conductor that orchestrates specialized skills like oss-to-saas, deploy-to-coolify, and license-advisor. Rather than just writing code, this skill manages the environment through distinct modes:</p><ul><li><p><strong>Configure Mode:</strong> Turns hours of UI clicking in services like Logto or Lago into a single conversation.</p></li><li><p><strong>Diagnose Mode:</strong> Specifically designed to troubleshoot service-level failures.</p></li><li><p><strong>Convert Mode:</strong> Acts as an adapter, hijacking generic plans and rewriting them to use our pre-wired OSS assembly.</p></li></ul><p>We also implemented an <strong>MCP (Model Context Protocol) fallback pattern</strong>. If an MCP server isn't connected for programmatic configuration, the AI gracefully degrades to providing manual, step-by-step instructions from the service’s README. This ensures the developer is never stranded by their own tooling.</p><h3>6. Takeaway 5: Choose "Assembly" Over "Framework" to Avoid Lock-in</h3><p>The final lesson is the shift from a proprietary framework to an "OSS Assembly." Each component—Logto, Lago, n8n—is a standalone project with its own roadmap. Our toolkit is merely the "glue."</p><p>Being an architect means acknowledging the "operational scars" of this approach. For example, during testing, we found that Logto requires a specific db seed command on first launch and originally conflicted with Uptime Kuma on port 3001. We had to move Logto to 3301 and bake the seeding into the setup.sh script. These are the real friction points of "Fast SaaS"—even with a single file, individual service quirks require manual handling. By keeping the layer thin, we allow developers to swap any piece without rewriting their entire application.</p><h3>7. Conclusion: The Future is Composable</h3><p>The Autonomyx Fast SaaS Toolkit demonstrates that launching enterprise-grade infrastructure isn't about building a bigger framework; it's about the intelligent assembly of world-class parts. By leveraging Docker profiles, Caddy’s simplicity, and AI-native orchestration, we can launch "ready-for-scale" stacks in minutes.</p><p>As you look at your next project, ask yourself: Are you wasting your time building a custom framework from scratch, or are you assembling the best of what already exists to get to market before the window closes?</p><p></p><p>npm url: <a href="https://www.npmjs.com/settings/autonomyx/packages" target="_blank">https://www.npmjs.com/settings/autonomyx/packages</a></p><p>github url: <a href="https://github.com/openautonomyx/autonomyx-fast-saas-toolkit" target="_blank">https://github.com/openautonomyx/autonomyx-fast-saas-toolkit</a></p><p>Please star us on Github.</p></div>
+</body>
+</html>
