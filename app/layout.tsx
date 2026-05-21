@@ -1,6 +1,8 @@
+import './globals.css'
+
 export const metadata = {
   title: 'OpenAutonomyX Blog',
-  description: 'AI systems, autonomous agents, infrastructure, and engineering',
+  description: 'AI systems, autonomous agents, infrastructure, and engineering insights.',
 }
 
 export default function RootLayout({
