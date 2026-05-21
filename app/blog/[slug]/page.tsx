@@ -1,20 +1,20 @@
 import { notFound } from 'next/navigation'
 import { getAllPosts, getPostBySlug } from '../../../lib/posts'
 
-export async function generateStaticParams() {
+export const dynamicParams = false
+
+export function generateStaticParams() {
   return getAllPosts().map((post) => ({
     slug: post.slug,
   }))
 }
 
-export default async function BlogPost({
+export default function BlogPost({
   params,
 }: {
-  params: Promise<{ slug: string }>
+  params: { slug: string }
 }) {
-  const { slug } = await params
-
-  const post = getPostBySlug(slug)
+  const post = getPostBySlug(params.slug)
 
   if (!post) {
     notFound()
