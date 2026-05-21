@@ -1,0 +1,44 @@
+name: ChatGPT Blog Post
+
+description: Submit a blog draft generated with ChatGPT for publishing
+
+title: "Blog: <post title>"
+labels:
+  - blog-draft
+
+body:
+  - type: input
+    id: title
+    attributes:
+      label: Post title
+      description: The public title of the blog post.
+      placeholder: "How autonomous agents change cloud operations"
+    validations:
+      required: true
+
+  - type: input
+    id: slug
+    attributes:
+      label: Slug
+      description: Lowercase URL slug. Use hyphens only.
+      placeholder: "autonomous-agents-cloud-operations"
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Short SEO summary for the post.
+      placeholder: "A practical look at how autonomous agents can improve cloud operations."
+    validations:
+      required: true
+
+  - type: textarea
+    id: content
+    attributes:
+      label: Blog content
+      description: Paste the final Markdown/MDX content from ChatGPT here.
+      placeholder: "## Introduction\n\nYour article content..."
+    validations:
+      required: true
