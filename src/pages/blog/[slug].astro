@@ -1,0 +1,31 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+export async function getStaticPaths() {
+  const posts = await Astro.glob('../../../content/posts/*.{md,mdx}')
+
+  return posts.map((post) => {
+    const fileName = post.file.split('/').pop() || ''
+    const slug = fileName.replace(/\.mdx?$/, '')
+
+    return {
+      params: { slug },
+      props: { post },
+    }
+  })
+}
+
+const { post } = Astro.props
+const { Content } = await post.render()
+---
+<BaseLayout title={`${post.frontmatter.title} | OpenAutonomyX`} description={post.frontmatter.description}>
+  <main class="container article">
+    <p class="eyebrow">{post.frontmatter.category || 'Engineering'}</p>
+    <h1>{post.frontmatter.title}</h1>
+    <p class="lead">{post.frontmatter.description}</p>
+    <p class="muted">{post.frontmatter.date} · {post.frontmatter.author || 'OpenAutonomyX'}</p>
+    <article class="article-content">
+      <Content />
+    </article>
+  </main>
+</BaseLayout>
