@@ -1,0 +1,26 @@
+site:
+  name: OpenAutonomyX Blog
+  type: technical-blog
+
+agent:
+  enabled: true
+  provider: AGenNext/GitHub-Agent
+  skills:
+    - editorial-review
+
+publishing:
+  contentDirectory: content/posts
+  publishLabel: publish
+
+seo:
+  minWords: 700
+  requireH2: true
+  requireLinks: true
+  requireDescription: true
+
+topics:
+  - AI agents
+  - autonomous systems
+  - cloud-native infrastructure
+  - platform engineering
+  - developer tooling
