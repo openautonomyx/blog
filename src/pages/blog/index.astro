@@ -1,0 +1,28 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+const posts = await Astro.glob('../../../content/posts/*.{md,mdx}')
+const sortedPosts = posts
+  .map((post) => ({
+    url: `/blog/${post.file.split('/').pop()?.replace(/\.mdx?$/, '')}/`,
+    frontmatter: post.frontmatter,
+  }))
+  .sort((a, b) => String(b.frontmatter.date || '').localeCompare(String(a.frontmatter.date || '')))
+---
+<BaseLayout title="Blog | OpenAutonomyX">
+  <main class="container hero">
+    <p class="eyebrow">Articles</p>
+    <h1>OpenAutonomyX Blog</h1>
+    <p class="lead">Technical essays on autonomous agents, AI infrastructure, platform engineering, security, and developer tooling.</p>
+  </main>
+  <section class="container grid">
+    {sortedPosts.length === 0 && <p class="muted">No posts published yet.</p>}
+    {sortedPosts.map((post) => (
+      <a class="card" href={post.url}>
+        <p class="tag">{post.frontmatter.category || 'Engineering'}</p>
+        <h2>{post.frontmatter.title}</h2>
+        <p>{post.frontmatter.description}</p>
+        <p class="muted">{post.frontmatter.date}</p>
+      </a>
+    ))}
+  </section>
+</BaseLayout>
