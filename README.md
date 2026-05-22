@@ -1,17 +1,19 @@
 # OpenAutonomyX Blog
 
-This repository contains the static blog site for **OpenAutonomyX**.
+This repository contains the Astro blog site for **OpenAutonomyX**.
 
 ## Live site
 
-The intended GitHub Pages URL is:
+The intended production URL is:
 
-https://openautonomyx.github.io/blog/
+https://blog.openautonomyx.com/
 
 ## Structure
 
-- `index.html` — the blog homepage with starter posts.
-- `.github/workflows/pages.yml` — GitHub Actions workflow that publishes the site to GitHub Pages.
+- `src/pages/index.astro` — homepage.
+- `src/pages/blog/index.astro` — blog listing page.
+- `src/pages/blog/[slug].astro` — blog article route.
+- `.github/workflows/deploy.yml` — GitHub Actions workflow that builds Astro and publishes `dist` to GitHub Pages.
 
 ## Deployment
 
@@ -22,8 +24,10 @@ In repository settings, use:
 1. **Settings → Pages**
 2. **Source:** GitHub Actions
 
-After that, every push to `main` will trigger the Pages deployment workflow.
+Every push to `main` triggers the Astro deployment workflow.
 
 ## Editing posts
 
-For now, posts are listed directly in `index.html`. Edit the `<article>` blocks to add, remove, or update blog posts.
+Update `src/pages/blog/index.astro` for visible blog cards and add article content under `content/posts` or Astro routes.
+
+Deploy refresh: 2026-05-22.
