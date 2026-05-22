@@ -4,20 +4,54 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>OpenAutonomyX Blog</title>
-  <meta name="description" content="OpenAutonomyX Blog">
+  <meta name="description" content="OpenAutonomyX engineering and research updates.">
   <style>
-    :root { color-scheme: light dark; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
-    body { margin: 0; min-height: 100vh; display: grid; place-items: center; background: #020617; color: #f8fafc; }
-    main { max-width: 760px; padding: 48px 24px; text-align: center; }
-    h1 { font-size: clamp(2.25rem, 8vw, 4.5rem); margin: 0 0 16px; letter-spacing: -0.04em; }
-    p { font-size: 1.125rem; line-height: 1.7; color: #cbd5e1; margin: 0 auto; }
-    a { color: #93c5fd; }
+    :root { font-family: Inter, ui-sans-serif, system-ui, sans-serif; background: #020617; color: #f8fafc; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: radial-gradient(circle at top, #1e293b 0%, #020617 55%); }
+    header { padding: 80px 24px 44px; text-align: center; }
+    .tag { color: #38bdf8; text-transform: uppercase; letter-spacing: .14em; font-size: .78rem; font-weight: 800; }
+    h1 { font-size: clamp(2.6rem, 9vw, 5.2rem); line-height: .95; letter-spacing: -.06em; margin: 12px auto 18px; max-width: 900px; }
+    .subtitle { max-width: 700px; margin: 0 auto; color: #cbd5e1; font-size: 1.1rem; line-height: 1.75; }
+    main { max-width: 1080px; margin: 0 auto; padding: 0 24px 80px; }
+    .posts { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 24px; }
+    article { background: rgba(15, 23, 42, .72); border: 1px solid rgba(148, 163, 184, .15); border-radius: 26px; padding: 28px; backdrop-filter: blur(10px); }
+    article:hover { border-color: rgba(56, 189, 248, .45); transition: .2s ease; }
+    time { color: #94a3b8; font-size: .92rem; }
+    h2 { margin: 14px 0 10px; font-size: 1.45rem; }
+    p { color: #cbd5e1; line-height: 1.7; }
+    a { color: #38bdf8; text-decoration: none; font-weight: 700; }
+    footer { border-top: 1px solid rgba(148, 163, 184, .14); text-align: center; color: #94a3b8; padding: 30px 24px; }
   </style>
 </head>
 <body>
+  <header>
+    <div class="tag">OpenAutonomyX</div>
+    <h1>Research, infrastructure, and autonomous systems.</h1>
+    <p class="subtitle">A publication focused on open autonomous tooling, AI infrastructure, and applied agent engineering.</p>
+  </header>
   <main>
-    <h1>OpenAutonomyX Blog</h1>
-    <p>This site is published with GitHub Pages. Replace this placeholder with your blog content.</p>
+    <section class="posts">
+      <article>
+        <time datetime="2026-05-21">May 21, 2026</time>
+        <h2>Launching the OpenAutonomyX Blog</h2>
+        <p>This blog will document experiments, infrastructure patterns, and lessons learned while building open autonomous systems.</p>
+        <a href="#launch">Read article →</a>
+      </article>
+      <article>
+        <time datetime="2026-05-21">May 21, 2026</time>
+        <h2>Why Open Agent Infrastructure Matters</h2>
+        <p>Transparent orchestration and reproducible workflows are becoming core requirements for trustworthy AI operations.</p>
+        <a href="#infrastructure">Read article →</a>
+      </article>
+      <article>
+        <time datetime="2026-05-21">May 21, 2026</time>
+        <h2>What’s Coming Next</h2>
+        <p>Upcoming posts will cover deployment pipelines, agent memory systems, evaluation strategies, and automation frameworks.</p>
+        <a href="#next">Read article →</a>
+      </article>
+    </section>
   </main>
+  <footer>© 2026 OpenAutonomyX · Powered by GitHub Pages</footer>
 </body>
 </html>
