@@ -23,11 +23,12 @@ const sortedPosts = Object.entries(modules)
   <section class="container grid">
     {sortedPosts.length === 0 && <p class="muted">No posts published yet.</p>}
     {sortedPosts.map((post) => (
-      <a class="card" href={post.url}>
+      <a class="card" href={post.url} aria-label={`Read ${post.frontmatter.title}`}>
         <p class="tag">{post.frontmatter.category || 'Engineering'}</p>
         <h2>{post.frontmatter.title}</h2>
         <p>{post.frontmatter.description}</p>
         <p class="muted">{post.frontmatter.date}</p>
+        <span class="button">Read article</span>
       </a>
     ))}
   </section>
