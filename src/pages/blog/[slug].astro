@@ -2,10 +2,10 @@
 import BaseLayout from '../../layouts/BaseLayout.astro'
 
 export async function getStaticPaths() {
-  const posts = await Astro.glob('../../../content/posts/*.{md,mdx}')
+  const modules = import.meta.glob('../../../content/posts/*.{md,mdx}', { eager: true })
 
-  return posts.map((post) => {
-    const fileName = post.file.split('/').pop() || ''
+  return Object.entries(modules).map(([filePath, post]) => {
+    const fileName = filePath.split('/').pop() || ''
     const slug = fileName.replace(/\.mdx?$/, '')
 
     return {
